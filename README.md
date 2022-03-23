@@ -113,13 +113,6 @@ With a good understanding of how price breaks down by waterfront and renovations
 ![Missing Waterfront Prices](/imgs/missing_water.png)
 ![Missing Renovation Prices](/imgs/missing_reno.png)
 
-Other steps taken during the data preparation phase include:
-- correction of column data types and scaling of necessary values
-- evaluating relationship of predictors to target variable
-- identification and removal of multi-collinearity
-- encoding of categorical columns
-- removal of features that don't meet linearity requirements
-
 ## Findings & Recommendations
 
 #### Question 1 - Current KC Housing Market & Discussion of Distributions
