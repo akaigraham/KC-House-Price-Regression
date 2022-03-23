@@ -71,7 +71,12 @@ The raw dataset takes up just over 3.5MB of storage, and contains 21 columns:
 * `sqft_lot15` - the square footage of the land lots of the nearest 15 neighbors
 
 After loading the dataset, plotting a histogram of price helps show the distribution of our target variable:
-[Target Variable Distribution](/imgs/target_hist.png)
+![Target Variable Distribution](/imgs/target_hist.png)
+
+
+
+
+
 
 
 
