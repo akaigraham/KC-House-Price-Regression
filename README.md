@@ -107,11 +107,9 @@ To prepare the raw dataset for modeling, this section handles a number of prepro
 Comparing price of houses with missing data to those houses with data provides insight into how to best handle the missing values.
 
 Houses with missing data appear more inline with houses that do not have waterfront
-![Price of Houses Missing Waterfront Data](/imgs/missing_water.png)
 ![Price of Houses Split by Waterfront](/imgs/waterfront_comparison.png)
 
 Similar to `waterfront`, houses with missing data are more inline with houses that have not received renovations.
-![Price of Houses Missing Reno Data](/imgs/missing_reno.png)
 ![Price of Houses Split by Reno](/imgs/reno_comp.png)
 
 Other steps taken during the data preparation phase include:
