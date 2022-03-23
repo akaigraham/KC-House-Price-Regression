@@ -99,6 +99,25 @@ Some key observations on the different features are listed here:
 * `sqft_lot15`: median of 7,626 sqft., max of 871,200 sqft. (this may be a mistake, definitely an outlier at the minimum).
 * `datetime`: We see date sold ranges from May 2014 to May 2015
 
+We now have a solid understanding of the dataset and what features are available to us. Move forward with data preparation.
+
+### 3. Data Preparation
+To prepare the raw dataset for modeling, this section handles a number of preprocessing and cleaning steps including:
+- checking and handling of missing values and duplicates
+  - missing values in `waterfront`, `view`, and `yr_renovated`
+  - compared sale prices of homes missing information by class label
+  - ![Price of Houses Missing Waterfront Data](/imgs/missing_water.png)
+  - ![Price of Houses Split by Waterfront](/imgs/waterfront_comparison.png)
+  - ![Price of Houses Missing Reno Data](/imgs/missing_reno.png)
+  - ![Price of Houses Split by Reno](/imgs/reno_comp.png)
+- correction of column data types and scaling of necessary values
+- evaluating relationship of predictors to target variable
+- identification and removal of multi-collinearity
+- encoding of categorical columns
+- removal of features that don't meet linearity requirements
+
+
+
 
 
 
