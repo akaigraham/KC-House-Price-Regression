@@ -1,6 +1,6 @@
 
 # Predicting Housing Prices in King's County
-![Housing Market Img](https://wfmj.images.worldnow.com/images/14012216_G.jpg?auto=webp&disable=upscale&height=560&fit=bounds&lastEditedDate=1496154836000)
+![House Size vs. Sale Price](/imgs/sqft_above_vs_target.png)
 
 ## README Outline
 Within this README file you will find:
@@ -19,7 +19,7 @@ Within this github repository you will find the following:
 1. `README.md` - this file
 2. [`House-Price_Regression.ipynb`](https://github.com/akaigraham/KC-House-Price-Regression/blob/main/House-Price_Regression.ipynb) - jupyter notebook containing all code and analyses / models
 3. [`House-Price-Analysis_Presentation.pdf`](https://github.com/akaigraham/KC-House-Price-Regression/blob/main/House-Price-Analysis_Presentation.pdf) - non-technical presentation presenting methodology, findings, and recommendations of analytical work
-4. `imgs` - directory containing images found within this file
+4. [`imgs`](https://github.com/akaigraham/KC-House-Price-Regression/tree/main/imgs) - directory containing images found within this file
 
 ## Project Objectives
 Accurately predict King's County house sale price using multivariate regression.  Regression to be used in context of real estate investor looking to make asset purchases / sales or determine what potential investments to make in an existing asset to drive up potential sale value.
@@ -88,7 +88,7 @@ After loading the dataset, plotting a histogram of price helps show the distribu
 
 #### Question 1 - Current KC Housing Market & Discussion of Distributions
  - bathrooms: appears to be categorical with the majority of entries falling between 0.5 and 3 bathrooms. there are a number of outliers to the right, with one entry having 8 bedrooms.  Room to clean these outliers up after the baseline model is generated.  Summary stats presented above, shows a median of 2.25 bathrooms, and a standard deviation of just over 0.75 bathrooms
- - bedrooms: appears to be categorical with the majority of entries having 1 to 4 bedrooms.  Significant oulier with one entry having 33 bedrooms.  Median number of bedrooms is 3, with a standard deviation of just under 1 bedroom
+ - bedrooms: appears to be categorical with the majority of entries having 1 to 4 bedrooms.  Significant outlier with one entry having 33 bedrooms.  Median number of bedrooms is 3, with a standard deviation of just under 1 bedroom
  - condition: appears categorical, max of 5, median of 3 - - looks like the majority are condition ratings of 3 and 4.  standard deviation of 0.65 (just over half one condition rating)
  - day_sold: appears to be categorical.  Looks like there is no deviation other than near the beginning of the month (day 1) and the middle of the month (day ~20) showing more houses sold near these days than on others
  - floors: categorical with a significant falloff after 2 floors
