@@ -74,6 +74,31 @@ The raw dataset takes up just over 3.5MB of storage, and contains 21 columns:
 After loading the dataset, plotting a histogram of price helps show the distribution of our target variable:
 ![Target Variable Distribution](/imgs/target_hist.png)
 
+In addition to the target, understanding distribution of predictors provides a good starting point of understanding which values are available to us in which columns, and start to identify any potential issues:
+![Predictors Histograms](/imgs/predictors_hist.png)
+
+Some key observations on the different features are listed here:
+* `id`: Again, not very helpful given this is just a unique identifier
+* `bedrooms`: We see the majority of KC houses have 1 to 5 bedrooms, with some outliers having more than 5.  The median number of bedrooms in KC is 3.   
+* `bathrooms`: The majority of KC houses have less than 3 bathrooms, with houses having 1 or 2.5 bathrooms being most common. The median is 2.25, with 75% of all houses in the dataset having 2.5 bathrooms or fewer.
+* `sqft_living`: Median living size is just under 2000 sq. ft at 1,910 sq.ft.  75% of KC houses have houses with 2,550 sq. ft. and less.
+* `sqft_lot`: The presence of outliers is clear, given the small unimodal bump close to 0, with a significant right skew.  Median lot size is 7,620 sqft.
+* `floors`: 75% of houses in KC have 2 floors or fewer.  The highest house has 3.5 floors.
+* `waterfront`: Very few houses in KC have waterfront views
+* `view`: Most houses in KC have not been viewed
+* `condition`: Median condition is 3 - seems we have a good representation of mid-condition homes.
+* `grade`: Median house grade is 7, with a max grade of 13 in the dataset.  Minimum grade is 3 - - seems the scale may have been shifted to remove 0 grades by 3 to the right.
+* `sqft_above`: Median sqft above is 1,560 sq. ft, with 75% of all KC houses having sqft above of 2,210 or less
+* `sqft_basement`: A large number of houses do not have basements
+* `yr_built`: The earliest KC house in the dataset was built in 1900, the earlies built in 2015.  Median yr_built is 1975.  75% of all houses were built in 1997 or prior.
+* `yr_renovated`: Majority have not been renovated.
+* `zipcode`: Good range of values
+* `lat`: see notes above
+* `long`: see notes above
+* `sqft_living15`: median of 1,840, max of 6,210 sqft.
+* `sqft_lot15`: median of 7,626 sqft., max of 871,200 sqft. (this may be a mistake, definitely an outlier at the minimum).
+* `datetime`: We see date sold ranges from May 2014 to May 2015
+
 
 
 
