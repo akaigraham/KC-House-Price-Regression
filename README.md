@@ -102,31 +102,24 @@ Some key observations on the different features are listed here:
 We now have a solid understanding of the dataset and what features are available to us. Move forward with data preparation.
 
 ### 3. Data Preparation
-To prepare the raw dataset for modeling, this section handles a number of preprocessing and cleaning steps including:
-- checking and handling of missing values and duplicates
-  - missing values in `waterfront`, `view`, and `yr_renovated`
-  - compared sale prices of homes missing information by class label
-  - ![Price of Houses Missing Waterfront Data](/imgs/missing_water.png)
-  - ![Price of Houses Split by Waterfront](/imgs/waterfront_comparison.png)
-  - ![Price of Houses Missing Reno Data](/imgs/missing_reno.png)
-  - ![Price of Houses Split by Reno](/imgs/reno_comp.png)
+To prepare the raw dataset for modeling, this section handles a number of preprocessing and cleaning steps including: checking and handling of missing values and duplicates.  Missing values found in the following three columns: `waterfront`, `view`, and `yr_renovated`.
+
+Comparing price of houses with missing data to those houses with data provides insight into how to best handle the missing values.
+
+Houses with missing data appear more inline with houses that do not have waterfront
+![Price of Houses Missing Waterfront Data](/imgs/missing_water.png)
+![Price of Houses Split by Waterfront](/imgs/waterfront_comparison.png)
+
+Similar to `waterfront`, houses with missing data are more inline with houses that have not received renovations.
+![Price of Houses Missing Reno Data](/imgs/missing_reno.png)
+![Price of Houses Split by Reno](/imgs/reno_comp.png)
+
+Other steps taken during the data preparation phase include:
 - correction of column data types and scaling of necessary values
 - evaluating relationship of predictors to target variable
 - identification and removal of multi-collinearity
 - encoding of categorical columns
 - removal of features that don't meet linearity requirements
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## Findings & Recommendations
 
