@@ -16,8 +16,8 @@ I iteratively build and evaluate a multivariate regression to predict house sale
 ## Repository Contents
 Within this github repository you will find the following:
 1. `README.md` - this file
-2. `House-Price_Regression.ipynb` - jupyter notebook containing all code and analyses / models
-3. `House-Price-Analysis_Presentation.pdf` - non-technical presentation presenting methodology, findings, and recommendations of analytical work
+2. [`House-Price_Regression.ipynb`](https://github.com/akaigraham/KC-House-Price-Regression/blob/main/House-Price_Regression.ipynb) - jupyter notebook containing all code and analyses / models
+3. [`House-Price-Analysis_Presentation.pdf`](https://github.com/akaigraham/KC-House-Price-Regression/blob/main/House-Price-Analysis_Presentation.pdf) - non-technical presentation presenting methodology, findings, and recommendations of analytical work
 4. `imgs` - directory containing images found within this file
 
 ## Project Objectives
@@ -71,7 +71,7 @@ The raw dataset takes up just over 3.5MB of storage, and contains 21 columns:
 * `sqft_lot15` - the square footage of the land lots of the nearest 15 neighbors
 
 After loading the dataset, plotting a histogram of price helps show the distribution of our target variable:
-
+[Target Variable Distribution](/imgs/target_hist.png)
 
 
 
