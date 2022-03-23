@@ -23,22 +23,60 @@ Within this github repository you will find the following:
 ## Project Objectives
 Accurately predict King's County house sale price using multivariate regression.  Regression to be used in context of real estate investor looking to make asset purchases / sales or determine what potential investments to make in an existing asset to drive up potential sale value.
 
-In addition to the primary objective, I am also hoping to answer the following questions:
-1. What does the current KC housing market look like? What do the majority of houses have in common? What does the typical KC house look like?
-2. Are there specific times (years, months, days) that might be related with a higher sale price?
+In addition to the primary objective, I am hoping to answer the following questions:
+1. What does the current KC housing market look like? What do the majority of houses have in common?
+2. Are there specific times (months) that might be related with a higher sale price?
 3. Are provided rankings (grade, condition, etc.) trustworthy / relevant to predicting sale price or will additional diligence be required to build our own rankings?
 
 ## Overview of the Process
+I followed the Cross-Industry Standard Process for Data Mining (CRISP-DM), comprised of the following steps:
+1. Business Understanding
+2. Data Understanding
+3. Data Preparation
+4. Modeling
+5. Evaluation
 
-1. Load dataset and handle data issues (missing values, weird values, column data types, etc.)
-2. Identify continuous, ordinal categorical, and non-ordinal categorical variables
-3. Drop continous variables that do not meet linearity requirments
-4. Handle multi-collinearity
-5. Handle categorical variables - treat ordinal categorical variables as single columns and one-hot encode non-ordinal categorical columns
-6. Use stepwise selection to select features that meet p-val thresholds (0.05)
-6. Run baseline model with these features to get preliminary results to compare subsequent models against
-7. Evaluate regression diagnostics, check where assumptions on linearity, normality of residuals and heteroscedasticity of residuals
-8. Remove clear outliers and ontinue preprocessing / transforming to improve results
+### 1. Business Understanding
+This process aims to build a regression to accurately predict house sale prices in King's County, with the goal of providing investors in the area a robust tool for making smarter investments.  This regression can be leveraged by investment professionals to validate other valuation methodologies and ultimately determine purchase price of housing assets, ensuring purchasers are not overpaying.  
+
+In addition to valuation predictions, unpacking which features and characteristics are most significant can help guide purchasing decisions and provide a checklist of features to look for when buying new assets.  
+
+In addition to aiding buyers in making smarter purchases, this tool can be leveraged by existing property owners to guide investments into existing properties.  Property owners can target projects, renovations, and expansions that are most likely to improve sale price.  
+
+
+### 2. Data Understanding
+This project uses the King's County House Sales dataset from [Kaggle](https://www.kaggle.com/datasets/harlfoxem/housesalesprediction).
+
+The raw dataset takes up just over 3.5MB of storage, and contains 21 columns:
+* `id` - unique identifier for a house
+* `date` - date house was sold
+* `price` - sale price and the prediction target
+* `bedrooms` - number of bedrooms/house
+* `bathrooms` - number of bathrooms/bedrooms
+* `sqft_living` - square footage of the home
+* `sqft_lot` - square footage of the lot
+* `floors` - total floors (levels) in the house
+* `waterfront` - house which has a view to a waterfront
+* `view` - has been viewed
+* `condition` - how good the condition is (Overall)
+* `grade` - overall grade given to the housing unit, based on King County grading system
+* `sqft_above` - square footage of house apart from basement
+* `sqft_basement` - square footage of the basement
+* `yr_built` - year built
+* `yr_renovated` - year when house was renovated
+* `zipcode` - zipcode
+* `lat` - latitude coordinate
+* `long` - longitude coordinate
+* `sqft_living15` - the square footage of interior housing living space for the nearest 15 neighbors
+* `sqft_lot15` - the square footage of the land lots of the nearest 15 neighbors
+
+After loading the dataset, plotting a histogram of price helps show the distribution of our target variable:
+
+
+
+
+
+
 
 ## Findings & Recommendations
 
