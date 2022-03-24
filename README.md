@@ -137,6 +137,74 @@ To do this, I plotted scatterplots against price for each continuous column, and
 ![Cont Feats](/imgs/cont_feats.png)
 ![Cat Feats](/imgs/cat_feats.png)
 
+#### Remove multicollinearity
+To check for highly correlated predictors, I wrote the following function to return highly correlated pairs.  This information was used to remove one member of the highly correlated pair to ensure this correlation was not included in final models.
+
+```
+def multi_collinearity(predictors, threshold=0.75):
+    """
+    Function to identify multi-collinearity amongst predictors based on a threshold value.
+    Parameters include:
+    - predictors: dataframe of features to be tested for multi-collinearity
+    - threshold: correlation threshold used to determine how many pairs are returned
+    """
+
+    df = predictors.corr().abs().stack().reset_index().sort_values(0, ascending=False)
+
+    # zip the variable name columns (named level_0 and level_1 by default)
+    df['pairs'] = list(zip(df['level_0'], df['level_1']))
+
+    # set index to pairs
+    df.set_index(['pairs'], inplace=True)
+
+    # drop level columns
+    df.drop(columns=['level_1', 'level_0'], inplace=True)
+
+    # rename correlation column as cc rather than 0
+    df.columns = ['cc']
+
+    # drop duplicates and return
+    df.drop_duplicates(inplace=True)
+    return df[(df['cc'] > threshold) & (df['cc'] < 1)]
+```
+
+#### Encode categorical columns
+As a final data preparation step, I one hot encoded categorical columns, an example of which is included below:
+```
+# bathrooms
+ohe = OneHotEncoder()
+bathrooms_ohe = ohe.fit_transform(cat_feats[['scaled_bathrooms']])
+bathrooms_ohe = pd.DataFrame(bathrooms_ohe,
+                             columns=ohe.categories_[0][1:], # dropped first
+                             index=cat_feats.index)
+
+# add suffix to column headers
+bathrooms_ohe.columns = [f'{col}-baths' for col in bathrooms_ohe.columns]
+bathrooms_ohe.head()
+```
+
+### 4. Modeling
+After preparing the dataset, I moved on to iteratively modeling a multivariate regression to predict house sale price in King's County.  
+
+To ensure only statistically significant features were included in the model, forward-backward feature selection based on p-value was used.  
+
+In total, three model iterations were completed, including a baseline and two additional iterations.  Assumptions required for linear regression were checked during each iteration, to ensure assumptions were not being violated.  
+
+These checks included producing Q-Q plots to evaluate if residuals were distributed normally, in addition to regression plots to show that assumptions of homoscedasticity hold. Examples of these two visualizations can be found below:
+
+![Q-Q Plot](/imgs/qqplot.png)
+![Residual Plot](/imgs/residplot.png)
+
+### 5. Evaluation
+During the evaluation stage, results of all different model iterations were compared, looking first to see if any assumptions required for linear regression were being violated, then moving to look at performance of the regression.  Analysis of final coefficients and adjusted r-squared metrics was completed to identify the best performing model.  
+
+The final model benefitted from a log transformation on the target variable (price) and the removal of some outliers from independent variables.  
+
+The positie effects resulting from log-transforming price can bee seen in the two distributions below:
+
+![Price vs. Log-Price](/imgs/pricelog.png)
+
+The best identified model ended up being comprised of 7 predictor variables, and produced an adjusted r-squared value of 0.716, meaning 71.6% of variation in the target variable was explained by our model.  
 
 ## Findings & Recommendations
 
