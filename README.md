@@ -208,6 +208,8 @@ As can be seen, the log-transformed variable is much more normally distributed, 
 
 The best identified model ended up being comprised of 7 predictor variables, and produced an adjusted r-squared value of 0.716, meaning 71.6% of variation in the target variable was explained by our model.  
 
+![Best Model Results](/imgs/results.png)
+
 ## Findings & Recommendations
 
 #### Question 1 - Current KC Housing Market & Discussion of Distributions
