@@ -200,7 +200,7 @@ During the evaluation stage, results of all different model iterations were comp
 
 The final model benefitted from a log transformation on the target variable (price) and the removal of some outliers from independent variables.  
 
-The positie effects resulting from log-transforming price can bee seen in the two distributions below:
+The positive effects resulting from log-transforming price can bee seen in the two distributions below:
 
 ![Price vs. Log-Price](/imgs/pricelog.png)
 
@@ -263,4 +263,4 @@ Effect sizes are really small, even when translating back from log transformed t
 1. When buying houses, target the purchase of larger homes, within the 47.6 to 47.7 degree latitude band.  Additionally, look for houses that have watefront view or have received renovations, to ensure you are buying an asset the market values.  If looking to buy asset where immediate investment can improve and drive up sale price, looking for a house that has not yet seen renovations will be key, as the investor should be able to realize these gains going forward.
 2. When selling assets, target selling during the spring months, as `month_4`, `month_5`, and `month_6` as these months are associated with slightly higher selling prices.
 3. Property management - given renovations and square footage being positively correlated with sale price, when looking to increase value of an existing property, adding square footage above or below ground, in addition to other types of renovations, should help drive gains.  
-4. When performing due diligence processes, if time is short or decisions need to be made quickly, `grade` has been shown to be a strong predictor of overall sale price.  Use this information strategically, or when in a pinch, to make quick decisions on limited information. 
+4. When performing due diligence processes, if time is short or decisions need to be made quickly, `grade` has been shown to be a strong predictor of overall sale price.  Use this information strategically, or when in a pinch, to make quick decisions on limited information.
