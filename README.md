@@ -18,7 +18,7 @@ I iteratively build and evaluate a multivariate regression to predict house sale
 Within this github repository you will find the following:
 1. [`README.md`](https://github.com/akaigraham/KC-House-Price-Regression/blob/main/README.md) - this file
 2. [`House-Price_Regression.ipynb`](https://github.com/akaigraham/KC-House-Price-Regression/blob/main/House-Price_Regression.ipynb) - jupyter notebook containing all code and analyses / models
-3. [`House-Price-Analysis_Presentation.pdf`](https://github.com/akaigraham/KC-House-Price-Regression/blob/main/House-Price-Analysis_Presentation.pdf) - non-technical presentation presenting methodology, findings, and recommendations of analytical work
+3. [`KC-Housing-Analysis_Presentation.pdf`](https://github.com/akaigraham/KC-House-Price-Regression/blob/main/KC-Housing-Analysis_Presentation.pdf) - non-technical presentation presenting methodology, findings, and recommendations of analytical work
 4. [`imgs`](https://github.com/akaigraham/KC-House-Price-Regression/tree/main/imgs) - directory containing images found within this file
 
 ## Project Objectives
