@@ -126,12 +126,14 @@ clean_df['month_sold'] = clean_df['date_sold'].map(lambda x: x.month)
 ```
 
 Reviewing the distribution of month sold, it is easy to see that the majority of houses are sold during spring months.
+
 ![Month Sold Distribution](/imgs/month.png)
 
 #### Evaluate relationship with target
 Prior to moving forward with modeling, understanding how each of our predictor's is related with the target variable is important to making sure the right features are included in the model.  
 
 To do this, I plotted scatterplots against price for each continuous column, and created boxplots against price for each categorical column, as shown below:
+
 ![Cont Feats](/imgs/cont_feats.png)
 ![Cat Feats](/imgs/cat_feats.png)
 
