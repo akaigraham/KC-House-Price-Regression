@@ -204,6 +204,8 @@ The positie effects resulting from log-transforming price can bee seen in the tw
 
 ![Price vs. Log-Price](/imgs/pricelog.png)
 
+As can be seen, the log-transformed variable is much more normally distributed, helping improve performance of the regression.
+
 The best identified model ended up being comprised of 7 predictor variables, and produced an adjusted r-squared value of 0.716, meaning 71.6% of variation in the target variable was explained by our model.  
 
 ## Findings & Recommendations
@@ -225,43 +227,40 @@ The best identified model ended up being comprised of 7 predictor variables, and
  - yr_renovated: only a handful have received renovations
 
 ### Question 2 - Is it beneficial to sell a house during specific times of the year?
- - When looking at month_sold vs. price, there is a slight bump in sale price during the spring months or month 3, month 4, and month5.  Additionally, our final model includes `month_3`, `month_5`, and `month_6` as coefficiencts that are statistically signficant from zero. This all supports the fact that a seller should target Spring to maximize the month in which sales price tends to be highest, albeit fairly small impacts
+ - When looking at month_sold vs. price, there is a slight bump in sale price during the spring months or month 4, month 5, and month 6.  This all supports the fact that a seller should target Spring to maximize the month in which sales price tends to be highest, albeit fairly small impacts
 
 ### Question 3 - Are the KC provided measures of quality (`condition` and `grade`) accurate for predicting price / can they be trusted?
- - Looiking at boxplots of grade and condition vs. price, we can see that houses with both high grades and high condition values are correlated with high sale prices.  `grade` shows a clear ordinal relationship with `price_boxcox`, and when evaluating `condition`, it's apparent that condition values of 3-5 are correlated with higher sales price.  Additionally, `condition_5` and `condition_4` are coefficients in our final model and statistically signifcant from zero at the 0.05 level.
+ - Looking at box plots of grade and condition vs. price, we can see that houses with both high grades and high condition values are correlated with high sale prices.  `grade` shows a clear ordinal relationship with `price`, and when evaluating `condition`, it's apparent that condition values of 3-5 are correlated with higher sales price.  
 
 ### Final Model:
-the final model is comprised of 13 predictor variables, of a constant
- - Final target variable: `price_boxcox`
- - Final predictor variables:
-     - `t_sqft_liv_15`
-     - `grade`
-     - `basement_1`
-     - `floors_15`
-     - `condition_5`
-     - `reno_1`
-     - `condition_4`
-     - `month_4`
-     - `floors_20`
-     - `month_3`
-     - `month_5`
-     - `day_26`
+the final model is comprised of 7 predictor variables, inclusive of a constant
+ - Final target variable: `log_price`
+ - Final predictor variables and coefficients:
+     - `sqft_basement`: 0.000267
+     - `sqft_above`: 0.000214
+     - `lat`: 1.455790
+     - `grade`: 0.162307
+     - `1-waterfront`: 0.639687
+     - `1-reno`: 0.18009
 
-Because price was transformed to `price_boxcox` using a boxcox transformation with a fitted lambda value of -.24, meaning our coefficients will be representing changes in `price_boxcox` (price raised to the -.24 exponent).  Our model has an adjusted r-squared value of 0.548, representing the amount of variance in `price_boxcox` that can be explained by our predictors.
+Coefficients can be interpreted in the following manner: a 1-unit increase in the independent variable, results in a coefficient sized change in the target / dependent variable.  Because price was transformed to `log_price`, our coefficients will be representing changes in `log_price`.  The following code can be applied to reverse the effects of the log transformation and make the coefficients easier to interpret:
 
-Coefficients
- - `grade`: overall grade given to the house based on the King County grading system.
-     - coefficient: 0.0105 -- a one unit change in grade, holding all other variables constant, relates to a 0.0105 change in box cox transformed price
- - `basement_1`: house has a basement
-     - coefficient: 0.007 -- having a basement is associated with an increase to `price_boxcox` by 0.007, holding others constant
- - `reno_1`: house has been renovated
-     - coefficient: 0.011 -- holding others constant, a renovated house is asssociated with an increase to `price_boxcox` by 0.011
- - `condition_5`: overall condition rating=5
-     - while coefficients are relatively small, a condition rating of 5 is associated with an increase to `price_boxcox` by 0.009
+```
+scaled_coef = 10 ** coef # reverses effects of log transformation
+```
 
-Effect sizes are really small, even when translating back from boxcox to regular price.  We have an intercept of 3.58 `price_boxcox`, which when translated back to price, is $3,053.  While coefficients are statistically signficant, with most confidence intervals containing non-zeros, a such a small effect size makes it hard to pull real insight from this data.
+After reversing the effects of the log transformation, we see the following coefficients:
+- `sqft_basement`: 1.00
+- `sqft_above`: 1.00
+- `lat`: 28.56
+- `grade`: 1.45
+- `1-waterfront`: 4.36
+- `1-reno`: 1.51
+
+Effect sizes are really small, even when translating back from log transformed to regular price.  A 1-unit increase in house square footage, according to our model, is associated with a 1 dollar increase in sale price.  While coefficients are statistically significant, the small effect sizes make it somewhat challenging to pull a lot of insight from our model.  Latitude has the biggest effect size on sale price, indicating location of houses is important.  
 
 ### Recommendations:
-1. When buying houses, look for houses that have no history of renovations, a low KC grade, and a house with 2 floors.  Houses with history of renovation are related to higher priced houses, similar with high-graded homes.  Targeting purchases with no history of renovation and a low grade should be related with a lower house purchase price based on our model.
-2. When selling assets, target selling during the spring months, as `month_3`, `month_4`, and `month_5` are associated with higher sale prices.
-3. Change management - driving asset improvement.  As we can see from the `reno_1` coefficient, a renovation is related to higher sale prices, along with houses with basements, and high grades / conditions.  As a result, it is recommended to implement these changes if possible to purchased assets before selling to try and maximize sale price. If possible, add basement, invest in renovations and improvements, with a goal of driving up condition ranking as close to 5 as possible, and driving grade as high as possible.
+1. When buying houses, target the purchase of larger homes, within the 47.6 to 47.7 degree latitude band.  Additionally, look for houses that have watefront view or have received renovations, to ensure you are buying an asset the market values.  If looking to buy asset where immediate investment can improve and drive up sale price, looking for a house that has not yet seen renovations will be key, as the investor should be able to realize these gains going forward.
+2. When selling assets, target selling during the spring months, as `month_4`, `month_5`, and `month_6` as these months are associated with slightly higher selling prices.
+3. Property management - given renovations and square footage being positively correlated with sale price, when looking to increase value of an existing property, adding square footage above or below ground, in addition to other types of renovations, should help drive gains.  
+4. When performing due diligence processes, if time is short or decisions need to be made quickly, `grade` has been shown to be a strong predictor of overall sale price.  Use this information strategically, or when in a pinch, to make quick decisions on limited information. 
