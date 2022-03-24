@@ -16,7 +16,7 @@ I iteratively build and evaluate a multivariate regression to predict house sale
 
 ## Repository Contents
 Within this github repository you will find the following:
-1. `README.md` - this file
+1. [`README.md`](https://github.com/akaigraham/KC-House-Price-Regression/blob/main/README.md) - this file
 2. [`House-Price_Regression.ipynb`](https://github.com/akaigraham/KC-House-Price-Regression/blob/main/House-Price_Regression.ipynb) - jupyter notebook containing all code and analyses / models
 3. [`House-Price-Analysis_Presentation.pdf`](https://github.com/akaigraham/KC-House-Price-Regression/blob/main/House-Price-Analysis_Presentation.pdf) - non-technical presentation presenting methodology, findings, and recommendations of analytical work
 4. [`imgs`](https://github.com/akaigraham/KC-House-Price-Regression/tree/main/imgs) - directory containing images found within this file
@@ -46,7 +46,7 @@ In addition to aiding buyers in making smarter purchases, this tool can be lever
 
 
 ### 2. Data Understanding
-This project uses the King's County House Sales dataset from [Kaggle](https://www.kaggle.com/datasets/harlfoxem/housesalesprediction).
+This project uses the King's County House Sales dataset from [Kaggle](https://www.kaggle.com/datasets/harlfoxem/housesalesprediction).  Sale price data comes from May 2014 through may 2015.  
 
 The raw dataset takes up just over 3.5MB of storage, and contains 21 columns:
 * `id` - unique identifier for a house
@@ -112,6 +112,29 @@ Comparing price of houses with missing data to those houses with data provides i
 With a good understanding of how price breaks down by waterfront and renovations, plotting the missing data points reveals distributions more inline with houses that do not have waterfront and houses that have not had renovations.
 ![Missing Waterfront Prices](/imgs/missing_water.png)
 ![Missing Renovation Prices](/imgs/missing_reno.png)
+
+Next step is to handle typing of various columns to ensure issues will not pop up later when modeling.  One example of this, was converting the date column and extracting the month information, as shown below:
+```
+# convert date to datetime column
+predictors['date_sold'] = pd.to_datetime(predictors['date'], infer_datetime_format=True)
+
+# drop initial date column
+predictors = predictors.drop('date', axis=1
+
+# create month sold column
+clean_df['month_sold'] = clean_df['date_sold'].map(lambda x: x.month)
+```
+
+Reviewing the distribution of month sold, it is easy to see that the majority of houses are sold during spring months.
+![Month Sold Distribution](/imgs/month.png)
+
+#### Evaluate relationship with target
+Prior to moving forward with modeling, understanding how each of our predictor's is related with the target variable is important to making sure the right features are included in the model.  
+
+To do this, I plotted scatterplots against price for each continuous column, and created boxplots against price for each categorical column, as shown below:
+![Cont Feats](/imgs/cont_feats.png)
+![Cat Feats](/imgs/cat_feats.png)
+
 
 ## Findings & Recommendations
 
