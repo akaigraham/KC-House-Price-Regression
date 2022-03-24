@@ -212,32 +212,9 @@ The best identified model ended up being comprised of 7 predictor variables, and
 
 ## Findings & Recommendations
 
-#### Question 1 - Current KC Housing Market & Discussion of Distributions
- - bathrooms: appears to be categorical with the majority of entries falling between 0.5 and 3 bathrooms. there are a number of outliers to the right, with one entry having 8 bedrooms.  Room to clean these outliers up after the baseline model is generated.  Summary stats presented above, shows a median of 2.25 bathrooms, and a standard deviation of just over 0.75 bathrooms
- - bedrooms: appears to be categorical with the majority of entries having 1 to 4 bedrooms.  Significant outlier with one entry having 33 bedrooms.  Median number of bedrooms is 3, with a standard deviation of just under 1 bedroom
- - condition: appears categorical, max of 5, median of 3 - - looks like the majority are condition ratings of 3 and 4.  standard deviation of 0.65 (just over half one condition rating)
- - day_sold: appears to be categorical.  Looks like there is no deviation other than near the beginning of the month (day 1) and the middle of the month (day ~20) showing more houses sold near these days than on others
- - floors: categorical with a significant falloff after 2 floors
- - grade: appears somewhat normally distributed although it is categorical.  Some grades above 10, with the most between 6 and 9.  Median grade is 7 with a std of 1.17
- - month_sold: categorical, but interesting to see that there are more houses sold during the summer months than winter months, which makes sense
- - price, sqft_above, sqft_living, sqft_living15 appear log normally distributed, with right skew and likely some positive outliers
- - sqft_lot and sqft_lot15 have have significant right skew and outliers
- - view: very few houses have been viewed (> 0 value)
- - waterfront: very few houses have waterfront
- - year_sold: only two years of sale data is included here (2014 and 2015), with more entries coming from 2014 than 2015
- - yr_built: the majority of houses represented were built after 1950, with the earliest house included being built in 1900
- - yr_renovated: only a handful have received renovations
-
-### Question 2 - Is it beneficial to sell a house during specific times of the year?
- - When looking at month_sold vs. price, there is a slight bump in sale price during the spring months or month 4, month 5, and month 6.  This all supports the fact that a seller should target Spring to maximize the month in which sales price tends to be highest, albeit fairly small impacts
-
-### Question 3 - Are the KC provided measures of quality (`condition` and `grade`) accurate for predicting price / can they be trusted?
- - Looking at box plots of grade and condition vs. price, we can see that houses with both high grades and high condition values are correlated with high sale prices.  `grade` shows a clear ordinal relationship with `price`, and when evaluating `condition`, it's apparent that condition values of 3-5 are correlated with higher sales price.  
-
-### Final Model:
-the final model is comprised of 7 predictor variables, inclusive of a constant
+The final regression is comprised of 7 predictor variables, inclusive of a constant
  - Final target variable: `log_price`
- - Final predictor variables and coefficients:
+ - Final predictor variables and coefficients, excluding constant:
      - `sqft_basement`: 0.000267
      - `sqft_above`: 0.000214
      - `lat`: 1.455790
