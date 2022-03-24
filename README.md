@@ -206,12 +206,8 @@ The positive effects resulting from log-transforming price can bee seen in the t
 
 As can be seen, the log-transformed variable is much more normally distributed, helping improve performance of the regression.
 
-The best identified model ended up being comprised of 7 predictor variables, and produced an adjusted r-squared value of 0.716, meaning 71.6% of variation in the target variable was explained by our model.  
-
-![Best Model Results](/imgs/results.png)
-
 ## Findings & Recommendations
-
+![Best Model Results](/imgs/results.png)
 The final regression is comprised of 7 predictor variables, inclusive of a constant
  - Final target variable: `log_price`
  - Final predictor variables and coefficients, excluding constant:
